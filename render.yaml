@@ -1,0 +1,24 @@
+# render.yaml — Render Blueprint
+# Docs: https://render.com/docs/blueprint-spec
+
+services:
+  - type: web
+    name: houselens
+    runtime: python
+    region: oregon            # change to: frankfurt, singapore, ohio, virginia
+    plan: free                # upgrade to starter for always-on
+
+    # Build
+    buildCommand: pip install -r requirements.txt
+
+    # Start  (2 workers; Render free tier has 512 MB RAM)
+    startCommand: gunicorn wsgi:app --bind 0.0.0.0:$PORT --workers 2 --timeout 120 --log-level info
+
+    # Health-check
+    healthCheckPath: /api/health
+
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11.0"
+      - key: WEB_CONCURRENCY
+        value: "2"

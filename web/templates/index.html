@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HouseLens — AI House Price Predictor</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════  NAV  ═══════════════════════════ -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-brand">
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 3L3 12h3v12h6v-7h4v7h6V12h3L14 3z" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" stroke-linejoin="round"/>
+          <circle cx="20" cy="20" r="6" fill="var(--bg)" stroke="var(--accent)" stroke-width="1.8"/>
+          <path d="M18 20h4M20 18v4" stroke="var(--accent)" stroke-width="1.6" stroke-linecap="round"/>
+        </svg>
+        HouseLens
+      </a>
+      <ul class="nav-links">
+        <li><a href="#predictor">Predictor</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#model-stats">Model Stats</a></li>
+      </ul>
+      <button class="nav-cta" onclick="document.getElementById('predictor').scrollIntoView({behavior:'smooth'})">
+        Get Estimate
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════  HERO  ══════════════════════════ -->
+  <section class="hero">
+    <div class="hero-bg-grid" aria-hidden="true"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Powered by Linear Regression · R² 0.65</div>
+      <h1 class="hero-title">
+        Predict Your<br/>
+        <span class="gradient-text">House Price</span><br/>
+        Instantly
+      </h1>
+      <p class="hero-subtitle">
+        Enter your property details and our machine-learning model — trained on
+        545 real transactions — will give you a precise market estimate in seconds.
+      </p>
+      <div class="hero-actions">
+        <button class="btn btn-primary" onclick="document.getElementById('predictor').scrollIntoView({behavior:'smooth'})">
+          Start Estimating
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <button class="btn btn-ghost" onclick="document.getElementById('how-it-works').scrollIntoView({behavior:'smooth'})">
+          How It Works
+        </button>
+      </div>
+      <div class="hero-stats">
+        <div class="h-stat"><span class="h-stat-num">545</span><span class="h-stat-label">Properties</span></div>
+        <div class="h-stat-divider"></div>
+        <div class="h-stat"><span class="h-stat-num">65%</span><span class="h-stat-label">R² Score</span></div>
+        <div class="h-stat-divider"></div>
+        <div class="h-stat"><span class="h-stat-num">4</span><span class="h-stat-label">Models Compared</span></div>
+        <div class="h-stat-divider"></div>
+        <div class="h-stat"><span class="h-stat-num">13</span><span class="h-stat-label">Features Used</span></div>
+      </div>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="house-card glass">
+        <div class="house-card-label">Estimated Value</div>
+        <div class="house-card-price">₹ 7,420,000</div>
+        <div class="house-card-bar">
+          <div class="house-card-bar-fill"></div>
+        </div>
+        <div class="house-card-row">
+          <span>3 bed · 2 bath · 6,000 sqft</span>
+          <span class="tag">Furnished</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════  HOW IT WORKS  ══════════════════════ -->
+  <section class="section" id="how-it-works">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Process</p>
+        <h2 class="section-title">How HouseLens Works</h2>
+        <p class="section-sub">Three steps from input to accurate estimate.</p>
+      </div>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="step-num">01</div>
+          <h3>Fill Property Details</h3>
+          <p>Enter area, bedrooms, bathrooms, stories, and amenity information about your property.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M9 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-4M15 3h6m0 0v6m0-6L10 14" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="step-num">02</div>
+          <h3>ML Model Processes</h3>
+          <p>The trained Linear Regression model applies feature engineering and scaling to your inputs in real time.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15l-5-5 1.41-1.41L11 14.17l7.59-7.59L20 8l-9 9z" fill="currentColor"/></svg>
+          </div>
+          <div class="step-num">03</div>
+          <h3>Get Instant Estimate</h3>
+          <p>Receive a price estimate along with a confidence range, powered by model RMSE statistics.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════  PREDICTOR FORM  ════════════════════ -->
+  <section class="section section-alt" id="predictor">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Estimate</p>
+        <h2 class="section-title">Enter Property Details</h2>
+        <p class="section-sub">All fields are required for an accurate prediction.</p>
+      </div>
+
+      <div class="predictor-layout">
+        <!-- FORM -->
+        <form id="predict-form" class="predict-form glass" novalidate>
+
+          <div class="form-section-label">Physical Attributes</div>
+          <div class="form-grid">
+            <div class="field">
+              <label for="area">Area <span class="field-unit">(sq ft)</span></label>
+              <input type="number" id="area" name="area" placeholder="e.g. 7420" min="500" max="50000" required />
+              <span class="field-error"></span>
+            </div>
+            <div class="field">
+              <label for="bedrooms">Bedrooms</label>
+              <div class="stepper" data-target="bedrooms">
+                <button type="button" class="step-btn" data-dir="-1">−</button>
+                <input type="number" id="bedrooms" name="bedrooms" value="3" min="1" max="10" readonly />
+                <button type="button" class="step-btn" data-dir="1">+</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="bathrooms">Bathrooms</label>
+              <div class="stepper" data-target="bathrooms">
+                <button type="button" class="step-btn" data-dir="-1">−</button>
+                <input type="number" id="bathrooms" name="bathrooms" value="2" min="1" max="10" readonly />
+                <button type="button" class="step-btn" data-dir="1">+</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="stories">Stories</label>
+              <div class="stepper" data-target="stories">
+                <button type="button" class="step-btn" data-dir="-1">−</button>
+                <input type="number" id="stories" name="stories" value="2" min="1" max="6" readonly />
+                <button type="button" class="step-btn" data-dir="1">+</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="parking">Parking Spaces</label>
+              <div class="stepper" data-target="parking">
+                <button type="button" class="step-btn" data-dir="-1">−</button>
+                <input type="number" id="parking" name="parking" value="1" min="0" max="5" readonly />
+                <button type="button" class="step-btn" data-dir="1">+</button>
+              </div>
+            </div>
+            <div class="field">
+              <label for="furnishingstatus">Furnishing Status</label>
+              <div class="select-wrapper">
+                <select id="furnishingstatus" name="furnishingstatus" required>
+                  <option value="furnished">Furnished</option>
+                  <option value="semi-furnished" selected>Semi-Furnished</option>
+                  <option value="unfurnished">Unfurnished</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-section-label" style="margin-top:2rem;">Amenities &amp; Location</div>
+          <div class="toggle-grid">
+            <label class="toggle-item">
+              <div class="toggle-text">
+                <span class="toggle-name">Main Road Access</span>
+                <span class="toggle-desc">Property faces a main road</span>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="mainroad" name="mainroad" checked />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+            <label class="toggle-item">
+              <div class="toggle-text">
+                <span class="toggle-name">Guest Room</span>
+                <span class="toggle-desc">Dedicated guest bedroom</span>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="guestroom" name="guestroom" />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+            <label class="toggle-item">
+              <div class="toggle-text">
+                <span class="toggle-name">Basement</span>
+                <span class="toggle-desc">Finished / usable basement</span>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="basement" name="basement" />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+            <label class="toggle-item">
+              <div class="toggle-text">
+                <span class="toggle-name">Hot Water Heating</span>
+                <span class="toggle-desc">Central hot water system</span>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="hotwaterheating" name="hotwaterheating" />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+            <label class="toggle-item">
+              <div class="toggle-text">
+                <span class="toggle-name">Air Conditioning</span>
+                <span class="toggle-desc">Central or split A/C unit</span>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="airconditioning" name="airconditioning" checked />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+            <label class="toggle-item">
+              <div class="toggle-text">
+                <span class="toggle-name">Preferred Area</span>
+                <span class="toggle-desc">Located in a prime locality</span>
+              </div>
+              <div class="toggle-switch">
+                <input type="checkbox" id="prefarea" name="prefarea" />
+                <span class="toggle-slider"></span>
+              </div>
+            </label>
+          </div>
+
+          <div class="form-actions">
+            <button type="button" id="reset-btn" class="btn btn-ghost">Reset</button>
+            <button type="submit" id="submit-btn" class="btn btn-primary">
+              <span id="btn-label">Predict Price</span>
+              <svg id="btn-icon" width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              <span id="btn-spinner" class="spinner hidden"></span>
+            </button>
+          </div>
+        </form>
+
+        <!-- RESULT PANEL -->
+        <div class="result-panel" id="result-panel">
+          <div class="result-placeholder" id="result-placeholder">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="28" cy="28" r="28" fill="var(--surface)"/>
+              <path d="M28 14L16 24h3v16h8v-9h2v9h8V24h3L28 14z" stroke="var(--muted)" stroke-width="1.5" stroke-linejoin="round" fill="none"/>
+            </svg>
+            <p>Your estimate will appear here once you submit the form.</p>
+          </div>
+          <div class="result-content hidden" id="result-content">
+            <div class="result-badge">AI Estimate</div>
+            <div class="result-label">Predicted Price</div>
+            <div class="result-price" id="result-price">—</div>
+            <div class="result-range-label">Confidence Range</div>
+            <div class="result-range" id="result-range">—</div>
+            <div class="result-bar-wrap">
+              <div class="result-bar-track">
+                <div class="result-bar-low" id="bar-low"></div>
+                <div class="result-bar-mid" id="bar-mid"></div>
+                <div class="result-bar-high" id="bar-high"></div>
+              </div>
+              <div class="result-bar-labels">
+                <span id="bar-label-low">Low</span>
+                <span id="bar-label-mid">Estimate</span>
+                <span id="bar-label-high">High</span>
+              </div>
+            </div>
+            <div class="result-meta">
+              <div class="result-meta-item">
+                <span class="result-meta-label">Model</span>
+                <span class="result-meta-val" id="meta-model">—</span>
+              </div>
+              <div class="result-meta-item">
+                <span class="result-meta-label">Test R²</span>
+                <span class="result-meta-val">0.6513</span>
+              </div>
+              <div class="result-meta-item">
+                <span class="result-meta-label">RMSE</span>
+                <span class="result-meta-val">±13.3 L</span>
+              </div>
+            </div>
+            <button class="btn btn-ghost btn-full" id="recalc-btn">Recalculate</button>
+          </div>
+          <div class="result-error hidden" id="result-error">
+            <svg width="40" height="40" viewBox="0 0 40 40" fill="none"><circle cx="20" cy="20" r="18" stroke="#e74c3c" stroke-width="1.5"/><path d="M20 12v10M20 27h.01" stroke="#e74c3c" stroke-width="2" stroke-linecap="round"/></svg>
+            <p id="error-msg">Something went wrong.</p>
+            <button class="btn btn-ghost" id="retry-btn">Try Again</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════  MODEL STATS  ═══════════════════════ -->
+  <section class="section" id="model-stats">
+    <div class="container">
+      <div class="section-header">
+        <p class="section-eyebrow">Transparency</p>
+        <h2 class="section-title">Model Performance</h2>
+        <p class="section-sub">All four candidate models were evaluated on a held-out 20% test set plus 5-fold cross-validation.</p>
+      </div>
+      <div class="metrics-grid">
+        <div class="metric-card accent">
+          <div class="metric-icon">R²</div>
+          <div class="metric-val">0.6513</div>
+          <div class="metric-label">Test R² Score</div>
+          <div class="metric-sub">Variance explained</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M3 11l4-4 4 4 4-6 4 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </div>
+          <div class="metric-val">9.77 L</div>
+          <div class="metric-label">Mean Abs. Error</div>
+          <div class="metric-sub">Average prediction error</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">σ</div>
+          <div class="metric-val">13.28 L</div>
+          <div class="metric-label">RMSE</div>
+          <div class="metric-sub">Root mean squared error</div>
+        </div>
+        <div class="metric-card">
+          <div class="metric-icon">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none"><path d="M11 3v18M3 11h18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </div>
+          <div class="metric-val">0.6495</div>
+          <div class="metric-label">5-Fold CV R²</div>
+          <div class="metric-sub">Cross-validation score</div>
+        </div>
+      </div>
+
+      <!-- Model comparison table -->
+      <div class="table-wrap glass">
+        <table class="model-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>CV R²</th>
+              <th>Test R²</th>
+              <th>MAE</th>
+              <th>RMSE</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="winner">
+              <td><strong>Linear Regression</strong></td>
+              <td>0.6495</td>
+              <td>0.6513</td>
+              <td>9,76,736</td>
+              <td>13,27,681</td>
+              <td><span class="badge badge-green">Best</span></td>
+            </tr>
+            <tr>
+              <td>Ridge (α=10)</td>
+              <td>0.6490</td>
+              <td>0.6489</td>
+              <td>9,77,425</td>
+              <td>13,32,257</td>
+              <td><span class="badge badge-gray">Runner-up</span></td>
+            </tr>
+            <tr>
+              <td>Gradient Boosting</td>
+              <td>0.6062</td>
+              <td>0.6362</td>
+              <td>9,77,803</td>
+              <td>13,56,055</td>
+              <td><span class="badge badge-gray">—</span></td>
+            </tr>
+            <tr>
+              <td>Random Forest</td>
+              <td>0.6222</td>
+              <td>0.6198</td>
+              <td>10,08,891</td>
+              <td>13,86,347</td>
+              <td><span class="badge badge-gray">—</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Features used -->
+      <div class="features-section">
+        <h3 class="features-title">Features Used in Prediction</h3>
+        <div class="features-grid">
+          <div class="feat-chip">Area (sq ft)</div>
+          <div class="feat-chip">Bedrooms</div>
+          <div class="feat-chip">Bathrooms</div>
+          <div class="feat-chip">Stories</div>
+          <div class="feat-chip">Main Road Access</div>
+          <div class="feat-chip">Guest Room</div>
+          <div class="feat-chip">Basement</div>
+          <div class="feat-chip">Hot Water Heating</div>
+          <div class="feat-chip">Air Conditioning</div>
+          <div class="feat-chip">Parking Spaces</div>
+          <div class="feat-chip">Preferred Area</div>
+          <div class="feat-chip">Furnishing Status</div>
+          <div class="feat-chip feat-chip-derived">Price / sqft proxy ✦</div>
+          <div class="feat-chip feat-chip-derived">Total Rooms ✦</div>
+          <div class="feat-chip feat-chip-derived">Amenity Score ✦</div>
+        </div>
+        <p class="features-note">✦ Engineered features derived during preprocessing</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═════════════════════════  FOOTER  ══════════════════════════ -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <svg width="22" height="22" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M14 3L3 12h3v12h6v-7h4v7h6V12h3L14 3z" fill="var(--accent)" stroke="var(--accent)" stroke-width="1" stroke-linejoin="round"/>
+        </svg>
+        <span>HouseLens</span>
+      </div>
+      <p class="footer-copy">Built with Python · scikit-learn · Flask · Vanilla JS</p>
+      <p class="footer-copy">Dataset: 545 housing transactions · Model: Linear Regression</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/main.js"></script>
+</body>
+</html>
