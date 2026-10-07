@@ -9,9 +9,9 @@
 
 Once deployed, your app will be available at:
 ```
-https://houselens.onrender.com
+https://houselen.onrender.com
 ```
-*(Replace with your actual Render service URL)*
+
 
 ---
 
